@@ -5,10 +5,10 @@ import csv
 
 def z_1():
     # Путь к папке с исходными изображениями
-    input_folder = "c/Users/Irina/PycharmProjects/pythonProject10/1.jpg"
+    input_folder = "C:/Users/Irina/PycharmProjects/pythonProject10/"
 
     # Путь к папке для итоговых изображений
-    output_folder = "c/Users/Irina/PycharmProjects/pythonProject10/1.jpg"
+    output_folder = "C:/Users/Irina/PycharmProjects/pythonProject10/"
 
     # Создаем папку для итоговых изображений, если её нет
     if not os.path.exists(output_folder):
@@ -21,33 +21,34 @@ def z_1():
             # Считываем изображение
             with Image.open(os.path.join(input_folder, filename)) as img:
                 # Применяем к нему операцию (например, изменяем размер)
-                new_img = img.resize((500, 500))
+                new_img = img.resize((300, 300))
                 # Сохраняем итоговое изображение в папку output_folder
-                new_img.save(os.path.join(output_folder, filename))
+                s="new"+filename
+                new_img.save(os.path.join(output_folder, s))
 
 
 def z_2():
     # Путь к папке с исходными изображениями
-    input_folder = "c/Users/Irina/PycharmProjects/pythonProject10"
+    input_folder = "C:/Users/Irina/PycharmProjects/pythonProject10/"
 
     # Путь к папке для итоговых изображений
-    output_folder = "c/Users/Irina/PycharmProjects/pythonProject10"
+    output_folder = "C:/Users/Irina/PycharmProjects/pythonProject10/"
 
     # Создаем папку для итоговых изображений, если её нет
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    # Проходим по всем файлам в папке input_folder
+    # Проходим по всем файлам в папке
     for filename in os.listdir(input_folder):
-        # Проверяем, что файл - изображение и имеет нужное расширение
+        # Проверяем, что файл - изображение
         if filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".png"):
             # Считываем изображение
             with Image.open(os.path.join(input_folder, filename)) as img:
                 # Применяем к нему операцию (например, изменяем размер)
                 new_img = img.resize((500, 500))
                 # Сохраняем итоговое изображение в папку output_folder
-                new_img.save(os.path.join(output_folder, filename))
-
+                s="new"+filename
+                new_img.save(os.path.join(output_folder, s))
 
 def z_3():
     filename = "data.csv"
@@ -77,30 +78,8 @@ def z_3():
     print(f"Итоговая сумма: {total_cost} руб.")
 
 
-while True:
 
-    print()
-    print("[1] - Задача 9.1")
-    print("[2] - Задача 9.2")
-    print("[3] - Задача 9.3")
-    print("[0] - выход")
-    print()
+print(z_1())
+print(z_2())
+print(z_3())
 
-    choise = int(input("Введите номер задания: "))
-
-    if choise == 1:
-
-        z_1()
-
-    elif choise == 2:
-
-        z_2()
-
-    elif choise == 3:
-
-        z_3()
-
-
-    elif choise == 0:
-        print("Выход...")
-        exit()
